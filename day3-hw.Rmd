@@ -1,0 +1,83 @@
+---
+title: "Day 3 Homework"
+author: "Insert your name here"
+date: "06/03/2020"
+output: html_document
+---
+
+# Homework starts below.
+
+Run the setup chunk below. Hint: click the green play button on the right side of the chunk.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+```
+
+## Homework
+
+In this homework, you will fit a mixed effects model to the fungicide data using `lmer()` function of **lme4** package. After fitting the model, you will use the **broom.mixed** package to tidy the model output, and do the posthoc treatment comparison using **emmeans** package.
+
+## Question 1
+
+- Import the `fungicide_dat.csv` in the code chunk below. You can use `read_csv()` function. Name the dataset `fungicide`.
+
+- View first few rows of the dataset using `head(fungicide)`.
+
+```{r}
+
+```
+
+## Question 2
+
+- Use the functions `group_by()` and `summarise()` to calculate the mean yield of three treatments in fungicide data.
+
+```{r}
+
+```
+
+In the paragraph below replace **TODO** with inline R code, that reports the appropriate mean yield.
+
+The average yield in the Control treatment is **TODO** bushels per acre. The difference between the yield of Fungicide_B and Control is **TODO** bushels per acre.
+
+## Question 2
+
+- Load the packages **lme4** and **lmerTest** using the function `library()`.
+
+- Then, use the function `lmer()` to fit a mixed effect model. Use `Yield` as the response variable, `Treatment` as a fixed effect, and `Rep` as a random effect. Use `?lmer` to get the full detail of this function. In the help page, you will see a lot of arguments for `lmer()`, but you will only need to use the first two here. The very first argument is `formula`, and here you will need to specify your response variable, fixed and random effects. You can specify the model using `Yield ~ Treatment + (1|Rep)`. This is the formula to use for an experiment conducted in a randomized complete block design (RCBD). Here, all three treatments were randomized within each Rep or Block. In the above formula, random effects are specified inside parenthesis. The second argument is `data`, and you should supply the object `fungicide` here. Save the fitted model in `mod_1` object.
+
+```{r}
+
+
+```
+
+## Quesion 3
+
+- Load the package **broom.mixed**. This is a spinoff package from **broom** that works well with mixed effects models. 
+
+- use the functions `tidy()`, `glance()`, and `augment()` on the model object `mod_1` created in the above chunk. Hint: you should use the pipe operator (`%>% `) to make the code more readable.
+
+```{r}
+
+```
+
+## Question 4
+
+- Load the package **emmeans**.
+
+- Use `emmeans()` function on `mod_1` object and save it an object named `mod_1_emm`. First argument to `emmeans()` function is `mod_1` and the second argument should be `"Treatment"`.
+
+- Look at `mod_1_emm`
+
+- Now, use the `pairs()` function on `mod_1_emm` and interpret the results.
+
+- Visualize `mod_1_emm` using `plot(mod_1_emm)`.
+
+```{r}
+
+
+```
+
+
+
